@@ -1,9 +1,9 @@
-import "../src/styles/global/app.css"
+import "./styles/global/style.css"
 
 export default function App() {
   return (
     <div className="App">
-      <h1>Unlimited films, TV programmes and more.</h1>
+      <h1>Unlimited films... TV programmes and more.</h1>
     </div>
   );
 }
