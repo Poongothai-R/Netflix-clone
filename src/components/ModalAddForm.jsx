@@ -6,12 +6,19 @@ import SeriesData from "../data/series.json";
 import { useCategory } from "../state/useCategory";
 import { createDocument } from "../scripts/fireStore";
 
+
 export default function ModalAddForm({ path }) {
-    const [form, setForm] = useState((path === 'TVShows') ? InitialData[1] : InitialData[0]);
+    let formData, data;
+
+    if (path === 'TVShows') { formData = InitialData[1]; data=SeriesData;}
+    else if ((path === 'Movies')||(path === 'Documentaries')) { formData = InitialData[0]; data=MovieFormData;}
+    
+    const [form, setForm] = useState(formData);
     const { setModal, dispatch } = useCategory();
-    const data = (path === 'TVShows') ? SeriesData : MovieFormData;
+
     async function onSubmit(event) {
         event.preventDefault();
+        document.getElementById("addCourse-submit").disabled = true;
         const result = await createDocument(path, form);
         result.status ? onSuccess(result.payload) : onFailure(result.message);
     }
@@ -20,11 +27,12 @@ export default function ModalAddForm({ path }) {
     }
     function onSuccess(id) {
         dispatch({ type: 'CREATE_ITEM', payload: [form, id] });
-        setModal(null);
+        document.getElementById("addCourse-submit").disabled = false;
+        setModal(null);  
     }
-
     function onFailure(errorMessage) {
         alert(errorMessage);
+        document.getElementById("addCourse-submit").disabled = false;
     }
 
     return (
@@ -33,8 +41,10 @@ export default function ModalAddForm({ path }) {
             <span>Note: all * fields are mandatory</span>
             <form className="content-form" id="contentform" onSubmit={(event) => onSubmit(event)}>
                 <FormFieldGenerator data={data} state={[form, setForm]} />
-                <button className="addform-btn" id="addCourse-submit" >Create</button>
-                <button className="addform-btn" id="addCourse-cancel" onClick={() => cancelform()}>Cancel</button>
+                <div id="addform-btn-group">
+                    <button className="addform-btn" id="addCourse-submit" >Create</button>
+                    <button className="addform-btn" id="addCourse-cancel" onClick={() => cancelform()}>Cancel</button>
+                </div>
             </form>
 
         </div>

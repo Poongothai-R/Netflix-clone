@@ -26,12 +26,23 @@
         "Casting":"",
         "Rating":"",
         "Genres":"",
-        "Trailer":null
+        "Trailer":null,
+        "Seasons":[]
     },
     {
         "BannerImage":null,
         "ThumbnailImage":null,
         "Trailer":null,
         "FullVideo":null        
+    },
+    {
+        "SeasonNumber":"",
+        "EpisodeNumber":"",
+        "EpisodeTitle":"",
+        "EpisodeDesc":"",
+        "EpisodeTime":"",
+        "EpisodeReleaseDate":"",
+        "EpisodeImage":null,
+        "EpisodeVideo":null
     }
 ]
