@@ -1,2 +1,13 @@
 @import "./variable.css";
 @import "./app.css";
+
+@import "../pages/contentmanager.css";
+@import "../pages/category.css";
+@import "../pages/season.css";
+
+@import "../components/modaladdform.css";
+
+@import "../components/modal.css";
+@import "../components/deletecategory.css";
+@import "../components/uploadmedia.css";
+@import "../components/updatecategory.css";
