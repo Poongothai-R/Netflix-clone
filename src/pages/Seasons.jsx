@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link ,useParams} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { readDocument } from "../scripts/fireStore";
 import { AiOutlineFileAdd } from "react-icons/ai";
@@ -9,6 +9,7 @@ import SeasonAdd from "../components/SeasonAdd";
 
 export default function Seasons() {
     const { seasonData, seasonDispatch, categoryId, getCategory } = useSeason();
+    const {showname}=useParams();
     const { setModal } = useCategory();
     const [status, setStatus] = useState(0);
     const cid = (categoryId === null) ? getCategory('CID') : categoryId;
@@ -34,10 +35,9 @@ export default function Seasons() {
         setStatus(2);
     }
 
-
-    const SeasonCard = (status === 1) && seasonData.map((recs) => recs.Seasons.map((itm) =>
-        <SeasonItems key={itm} recs={itm} seasonData={recs} path={path+itm} />));
-
+    // console.log(seasonData[0]);
+    // const SeasonCard = (status === 1) && seasonData.Seasons.map((recs) => <SeasonItems key={recs} recs={recs} seasonData={seasonData} path={collection} />);
+    const SeasonCard = (status === 1) && seasonData.map((recs) => recs.Seasons.map((itm) => <SeasonItems key={itm} recs={itm} seasonData={recs} path={path+itm} />));
     return (
         <div>
             {(status === 0) && <h1> Loading... </h1>}
@@ -46,13 +46,12 @@ export default function Seasons() {
                     <div className="container">
                         <div className="cards">
                             {(seasonData) && SeasonCard}
-                            <Link key={"seasonAddForm"} onClick={() => {
-                                setModal(<SeasonAdd path={path} data={seasonData[0]} />) }}>
+                            <Link key={"seasonAddForm"} onClick={() => { setModal(<SeasonAdd path={path} data={seasonData[0]} />) }}>
                                 <AiOutlineFileAdd className="reacticons" />
                             </Link>
                         </div>
                     </div>
-                    <Link to={"/tvshows"} className="back-btn">Go Back</Link>
+                    <Link to={"/tvshows"} className="back-btn">{showname}</Link>
                 </div>}
             {(status === 2) && <h1> Error </h1>}
         </div>
