@@ -5,11 +5,15 @@ import DeleteSeason from "./DeleteSeason";
 
 export default function SeasonItems({path,seasonData, recs}){
 
-    const { id, BannerImage } = seasonData;
+    const { id, BannerImage,Title } = seasonData;
+    const showname = Title.replace(/ /g,"");
+
     const { setModal } = useCategory();
-    const ImageSource = (BannerImage === null) ? Placeholder : BannerImage;
 
     const DeleteItem = <DeleteSeason id={id} path={path} seasonNumber={recs}/>;
+    // Properties
+    const ImageSource = (BannerImage === null) ? Placeholder : BannerImage;
+    
 
     return (
 
@@ -19,8 +23,8 @@ export default function SeasonItems({path,seasonData, recs}){
             <div className="modal-buttons">
                 <button onClick={() => setModal(DeleteItem)}>❌</button>
             </div>
-            {(path !=='TVShows') && <Link className="card-link"/>}
-            {(path ==='TVShows') && <Link className="card-link" to={"/tvshows/seasons"}/>}
+            {(!path.includes('TVShows')) && <Link className="card-link"/>}
+            {(path.includes('TVShows')) && <Link className="card-link" to={`/tvshows/${showname}/${recs}`}/>}
         </div >
 
     )
