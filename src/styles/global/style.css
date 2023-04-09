@@ -1,13 +1,17 @@
 @import "./variable.css";
 @import "./app.css";
 
+@import "../pages/signin.css";
+@import "../pages/signup.css";
+@import "../pages/forgotpassword.css";
+
 @import "../components/navbar.css";
-@import "../components/UserDropDown.css";
 
 @import "../pages/contentmanager.css";
 @import "../pages/category.css";
 @import "../pages/season.css";
 @import "../pages/episode.css";
+
 @import "../components/modaladdform.css";
 
 @import "../components/modal.css";

@@ -1,4 +1,4 @@
-import { Link ,useParams} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { readDocument } from "../scripts/fireStore";
 import { AiOutlineFileAdd } from "react-icons/ai";
@@ -9,7 +9,6 @@ import SeasonAdd from "../components/SeasonAdd";
 
 export default function Seasons() {
     const { seasonData, seasonDispatch, categoryId, getCategory } = useSeason();
-    const {showname}=useParams();
     const { setModal } = useCategory();
     const [status, setStatus] = useState(0);
     const cid = (categoryId === null) ? getCategory('CID') : categoryId;
@@ -51,7 +50,7 @@ export default function Seasons() {
                             </Link>
                         </div>
                     </div>
-                    <Link to={"/tvshows"} className="back-btn">{showname}</Link>
+                    <Link to={"/tvshows"} className="back-btn">Go Back</Link>
                 </div>}
             {(status === 2) && <h1> Error </h1>}
         </div>
