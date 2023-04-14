@@ -14,7 +14,6 @@ export default function Episode() {
     const { categoryId, getCategory } = useSeason();
     const cid = (categoryId === null) ? getCategory('CID') : categoryId;
     const { episodeData, episodeDispatch } = useEpisode();
-
     const { showname, season } = useParams();
     const collection = 'TVShows/' + cid + '/' + season;
 
@@ -35,8 +34,10 @@ export default function Episode() {
     function onFail() {
         setStatus(2);
     }
-    // console.log(episodeData);
-    const EpisodeList = (status === 1) && (episodeData.map((recs) => <EpisodeCard key={recs.id} data={recs} path={collection} />))
+
+    const EpisodeList = (status === 1) && (episodeData.map((recs) =>
+        <EpisodeCard key={recs.id} data={recs} path={collection} />))
+
     return (
         <div>
             {(status === 0) && <h1> Loading... </h1>}
@@ -46,7 +47,8 @@ export default function Episode() {
                     <div className="container">
                         <div className="cards">
                             {(episodeData) && EpisodeList}
-                            <Link key={"EpsidoeAddForm"} onClick={() => { setModal(<ModalAddForm path={collection} createType={"Episode"}/>) }}>
+                            <Link key={"EpsidoeAddForm"} onClick={() => {
+                                setModal(<ModalAddForm path={collection} createType={"Episode"}/>) }}>
                                 <AiOutlineFileAdd className="reacticons" />
                             </Link>
                         </div>

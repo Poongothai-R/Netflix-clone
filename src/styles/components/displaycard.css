@@ -1,40 +1,157 @@
-#displaycard{
-    /* border: 1px solid var(--netflix-red); */
+#displaycard {
     min-height: 80vh;
+    overflow: hidden;
 }
 
-#displaycard ul{
+#displaycard ul {
     margin-left: 50px;
+    margin-bottom: 5%;
     display: flex;
     flex-direction: column;
-    gap:50px;
+    gap: 50px;
 }
 
-#displaycard ul li{
+#displaycard ul li {
     list-style: none;
-    font-size: 28px;
-    height: 25vh;
-    min-width: 100%;
+    font-size: 22px;
+    height: 20vh;
+    min-width: 60%;
     display: flex;
     flex-direction: column;
-    gap:25px;
+    gap: 10px;
 }
 
-.content-cards{
+#displaycard ul li h3 {
+    text-transform: capitalize;
+    opacity: 0.75;
+}
+
+.content-cards {
     display: flex;
-    gap: 20px;
-    height: 100%;
+    gap: 10px;
+    height: 20vh;
     min-width: 100%;
-    overflow-x: visible;
-    
 }
 
-.content-cards img{
-    height:20vh;
-    width: 450px;
-    border-radius: 10px;
+.datacard {
+    height: 16vh;
+    min-width: 18vw;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-white);
+    background-color: linear-gradient(to top, rgba(3, 3, 3, 1), rgba(3, 3, 3, 0.3));
 }
 
-.content-cards img:hover{
- transform: scale(125%);
+.datacard img {
+    height: 16vh;
+    width: 100%;
+    cursor: pointer;
+}
+
+.card-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 5%;
+    background-color: var(--color-black);
+}
+
+.datacard .play-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+}
+
+.datacard .play-btn svg {
+    color: var(--color-white);
+    cursor: pointer;
+    height: 50px;
+    width: 30px;
+}
+
+.datacard:hover {
+    z-index: 5;
+    min-height: 20vh;
+    transform: scale(105%) translateY(-10%);
+    overflow: visible;
+}
+
+
+@media screen and (max-width:699px) {
+    #displaycard ul {
+        margin-left: 15px;
+        margin-bottom: 5%;
+        gap: 5px;
+    }
+
+    #displaycard ul li {
+        font-size: 12px;
+        height: 20vh;
+        gap: 5px;
+    }
+
+    .content-cards {
+        gap: 2px;
+        height: 20vh;
+    }
+
+    .datacard {
+        height: 15vh;
+        min-width: 45vw;
+    }
+
+    .datacard img {
+        height: 15vh;
+    }
+    .datacard:hover {
+        min-height: 16vh;
+    }
+}
+
+
+@media screen and (min-width:300px) and (max-width:699px) and (min-height:700px) {
+
+    #displaycard ul li,
+    .content-cards {
+        height: 17vh;
+    }
+
+    .datacard,
+    .datacard img {
+        height: 13vh;
+    }
+
+    @media screen and (min-width:520px) {
+        .datacard {
+            min-width: 35vw;
+        }
+    }
+}
+
+@media screen and (min-width:700px) and (max-width:1023px) {
+    #displaycard ul {
+        margin-left: 15px;
+        margin-bottom: 5%;
+        gap: 5px;
+    }
+
+    #displaycard ul li,
+    .content-cards {
+        font-size: 12px;
+        height: 13vh;
+        gap: 5px;
+    }
+
+    .datacard {
+        height: 9vh;
+        min-width: 23vw;
+
+    }
+
+    .datacard img {
+        height: 9vh;
+    }
+    .datacard:hover {
+        min-height: 12vh;
+    }
 }

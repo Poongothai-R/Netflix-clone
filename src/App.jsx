@@ -1,6 +1,6 @@
 
 import "./styles/global/style.css";
-
+import ScrollTop from "./scripts/ScrollTop";
 import { BrowserRouter } from "react-router-dom";
 import Modal from "./components/Modal";
 import { useCategory } from "./state/useCategory";
@@ -15,6 +15,7 @@ export default function App() {
   const { modal, setModal } = useCategory();
   return (
     <BrowserRouter>
+      <ScrollTop />
       {uid ? <LoggedRoutes /> : <UnLoggedRoutes />}
       <Modal modalState={[modal, setModal]} />
     </BrowserRouter>
