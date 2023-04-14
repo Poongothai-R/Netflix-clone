@@ -9,6 +9,7 @@ import { useUser } from "../../state/useUser";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
+
     const data = SignInFields.filter((recs) => recs.key === 'Email' || recs.key === 'Password');
     const [form, setForm] = useState({ Email: "", Password: "" });
     const { setUid, saveUID, setIsAdmin, saveAdmin } = useUser();
@@ -18,8 +19,6 @@ export default function SignIn() {
     async function onSubmit(event) {
         event.preventDefault();
         document.getElementById("login-btn").disabled = true;
-          
-        console.log(form);
         const result = await login(form.Email, form.Password);
         result.status ? onSuccess(result) : onFailure(result);
     }

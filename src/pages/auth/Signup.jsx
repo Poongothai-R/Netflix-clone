@@ -15,7 +15,6 @@ export default function Signup() {
     async function onSubmit(event) {
         event.preventDefault();
         document.getElementById("signup-btn").disabled = true;
-        console.log(form);
         const result = await createAccount(form.Email, form.Password);
         result.status ? onSuccess(result, event) : onFailure(result);
     }
@@ -49,9 +48,9 @@ export default function Signup() {
                 </div>
                 <div className="signup-container">
                     <span>STEP 1 OF 1</span>
-                    <h1>Welcome back!</h1>
+                    <h1>Welcome!</h1>
                     <h1>Joining Netflix is easy.</h1>
-                    <p>Enter your password and you'll be watching in no time.</p>
+                    <p>Enter your details and you'll be watching in no time.</p>
                     <form className="signup-form" onSubmit={(event) => onSubmit(event)}>
                         <FormFieldGenerator data={data} state={[form, setForm]} />
                         <button className="signup-btn" id="signup-btn">Create Account</button>

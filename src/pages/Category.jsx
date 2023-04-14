@@ -12,7 +12,9 @@ export default function Category() {
     const { saveCID} = useSeason();
     const [status, setStatus] = useState(0);
     const { category } = useParams();
-    const collection = category === "movies" ? "Movies" : (category === "tvshows" ? "TVShows" : "Documentaries");
+    const collection = category === "movies" ? "Movies"
+            : (category === "tvshows" ? "TVShows" : "Documentaries");
+
     useEffect(() => {
         loadData(collection);
         saveCID("");
@@ -31,7 +33,8 @@ export default function Category() {
         setStatus(2);
     }
 
-    const categoryItems = (status === 1) && (categoryData.map((recs) => <CategoryCard key={recs.id} categoryData={recs} path={collection} />))
+    const categoryItems = (status === 1) && (categoryData.map((recs) =>
+        <CategoryCard key={recs.id} categoryData={recs} path={collection} />))
 
     return (
         <div>
@@ -41,7 +44,8 @@ export default function Category() {
                     <div className="container">
                         <div className="cards">
                             {categoryData.length > 0 &&  categoryItems }
-                            <Link key={"AddForm"} onClick={() => { setModal(<ModalAddForm path={collection} createType={"Category"} />) }}>
+                            <Link key={"AddForm"} onClick={() => {
+                                setModal(<ModalAddForm path={collection} createType={"Category"} />) }}>
                                 <AiOutlineFileAdd className="reacticons" />
                             </Link>
                         </div>
