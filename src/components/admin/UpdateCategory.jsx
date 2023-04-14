@@ -1,7 +1,7 @@
 import { useCategory } from "../../state/useCategory";
 import { useState } from "react";
 import { updateDocument } from "../../scripts/fireStore";
-import FormFieldGenerator from "../../forms/FormFieldGenerator";
+import FormFieldGenerator from "../forms/FormFieldGenerator";
 import MovieFormData from "../../data/movies.json";
 import SeriesData from "../../data/series.json";
 import SeasonData from "../../data/season.json";
