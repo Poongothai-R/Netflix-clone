@@ -1,7 +1,7 @@
 import Logo from "../../assets/images/netflix-logo.svg"
 import Background from "../../assets/images/background-img.jpg";
 import SignInFields from "../../data/profile.json";
-import FormFieldGenerator from "../../components/FormFieldGenerator";
+import FormFieldGenerator from "../../forms/FormFieldGenerator";
 import { useState } from "react";
 import { login } from "../../scripts/auth";
 import { useProfile } from "../../state/useProfile";
@@ -9,7 +9,6 @@ import { useUser } from "../../state/useUser";
 import { useNavigate } from "react-router-dom";
 
 export default function SignIn() {
-
     const data = SignInFields.filter((recs) => recs.key === 'Email' || recs.key === 'Password');
     const [form, setForm] = useState({ Email: "", Password: "" });
     const { setUid, saveUID, setIsAdmin, saveAdmin } = useUser();

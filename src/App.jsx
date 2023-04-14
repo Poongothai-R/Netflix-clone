@@ -1,8 +1,10 @@
 
 import "./styles/global/style.css";
+
+
 import ScrollTop from "./scripts/ScrollTop";
 import { BrowserRouter } from "react-router-dom";
-import Modal from "./components/Modal";
+import Modal from "./components/shared/Modal";
 import { useCategory } from "./state/useCategory";
 import { useUser } from "./state/useUser";
 import LoggedRoutes from "./routes/LoggedRoutes";

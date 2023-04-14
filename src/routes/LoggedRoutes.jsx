@@ -1,18 +1,18 @@
-import AdminUserLogin from "./AdminUserLogin";
-import NormalUserLogin from "./NormalUserLogin";
-import Navbar from "../components/Navbar";
-import NavbarMobile from "../components/NavbarMobile";
+
+import AdminLogin from "./AdminLogin";
+import ClientLogin from "./ClientLogin";
+import Navbar from "../navigationbar/Navbar";
+import NavbarMobile from "../navigationbar/NavbarMobile";
 
 
 export default function LoggedRoutes() {
 
   const checkAdmin = localStorage.checkAdmin;
-
   return (
     <div>
       <Navbar />
       <NavbarMobile />
-      {(checkAdmin === 'true') ? <AdminUserLogin /> : <NormalUserLogin />}
+      {(checkAdmin === 'true') ? <AdminLogin /> : <ClientLogin />}
     </div>
   )
 }

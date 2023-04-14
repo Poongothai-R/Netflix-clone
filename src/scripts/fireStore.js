@@ -1,5 +1,6 @@
 // Node modules
-import { collection, getDocs, getDoc, addDoc, doc, setDoc, deleteDoc, updateDoc, getCountFromServer } from "firebase/firestore";
+import { collection, getDocs, getDoc, addDoc } from "firebase/firestore";
+import {doc, setDoc, deleteDoc, updateDoc, getCountFromServer}  from "firebase/firestore";
 
 // Project files
 import { database } from "./firebaseSetup";
@@ -12,7 +13,7 @@ export async function readDocuments(collectionName) {
     const document = { id: doc.id, ...doc.data() };
     result.push(document);
   });
-  // console.log(result);
+
   return result;
 }
 
@@ -51,7 +52,7 @@ export async function updateDocument(collectionName, data, id) {
     await updateDoc(documentPath, data);
     result = { status: true, payload: null, message: `Document ${id} updated` };
   } catch (error) {
-    console.log(error);
+
     result.message = error.code;
   }
 
@@ -88,8 +89,8 @@ export async function deleteCollection(collectionName) {
   let result = { status: false, payload: null, message: "" };
   try{
     const querySnapshot = await getDocs(collection(database, collectionName));
-    querySnapshot.forEach(async (itm) => {
-      const documentPath = doc(database, collectionName, itm.id);
+    querySnapshot.forEach(async (item) => {
+      const documentPath = doc(database, collectionName, item.id);
       await deleteDoc(documentPath);
     });
     result = { status: true, payload: null, message: `all documents are deleted` };
@@ -102,9 +103,3 @@ export async function deleteCollection(collectionName) {
   return result;
 }
 
-
-export async function getDocumentCount(collectionName){
-  const collectionRef = collection(database, collectionName);
-  const documentCount = await getCountFromServer(collectionRef);
-  return documentCount;
-}

@@ -42,7 +42,10 @@ label,
     margin-bottom: 25px;
     line-height: 2;
 }
-
+.loading{
+    margin:0 auto;
+    padding: 20% 40%;
+}
 
 input,
 textarea {
@@ -131,6 +134,9 @@ select {
         height: 20px;
         width: 20px;
     }
+    .loading{
+        padding: 40% 30%;
+    }
 }
 
 
@@ -194,6 +200,9 @@ select {
 
     .eye-btn {
         margin-top: -10%;
+    }
+    .loading{
+        padding: 50% 30%;
     }
 
     @media screen and (min-height:1024px) {}

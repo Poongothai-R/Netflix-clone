@@ -1,6 +1,6 @@
 import Logo from "../../assets/images/netflix-logo.svg";
 import ForgotPasswordFields from "../../data/profile.json";
-import FormFieldGenerator from "../../components/FormFieldGenerator";
+import FormFieldGenerator from "../../forms/FormFieldGenerator";
 import { useState } from "react";
 import { recoverAccount } from "../../scripts/auth";
 import { useNavigate } from "react-router-dom";

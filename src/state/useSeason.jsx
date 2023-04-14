@@ -29,9 +29,8 @@ export function SeasonProvider({ children, storeKey }) {
 }
 
 export function useSeason() {
+
     const context = useContext(SeasonContext);
-
     if (!context) throw new Error("useSeason is used inside <SeasonProvider>");
-
     return context;
 }
