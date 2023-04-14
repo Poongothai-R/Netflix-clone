@@ -1,8 +1,8 @@
 
 import AdminLogin from "./AdminLogin";
 import ClientLogin from "./ClientLogin";
-import Navbar from "../navigationbar/Navbar";
-import NavbarMobile from "../navigationbar/NavbarMobile";
+import Navbar from "../components/navigationbar/Navbar";
+import NavbarMobile from "../components/navigationbar/NavbarMobile";
 
 
 export default function LoggedRoutes() {

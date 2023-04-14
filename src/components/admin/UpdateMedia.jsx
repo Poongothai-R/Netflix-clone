@@ -5,7 +5,7 @@ import resizeImage from "../../scripts/resize-image/resizeImage";
 import CategoryForm from "../../data/mediafile.json";
 import EpisodeForm from "../../data/episodemedia.json";
 import InitialData from "../../data/initialdata.json";
-import FormFieldGenerator from "../../forms/FormFieldGenerator";
+import FormFieldGenerator from "../forms/FormFieldGenerator";
 import { uploadFile } from "../../scripts/cloudStorage";
 import { useCategory } from "../../state/useCategory";
 import { useState } from "react";

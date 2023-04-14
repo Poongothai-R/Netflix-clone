@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FormFieldGenerator from "../../forms/FormFieldGenerator";
+import FormFieldGenerator from "../forms/FormFieldGenerator";
 import InitialData from "../../data/initialdata.json";
 import SeasonData from "../../data/season.json";
 import { createDocumentWithCustomId, updateDocument } from "../../scripts/fireStore";

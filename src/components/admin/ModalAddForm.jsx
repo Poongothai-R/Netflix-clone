@@ -1,5 +1,5 @@
 import { useState } from "react";
-import FormFieldGenerator from "../../forms/FormFieldGenerator";
+import FormFieldGenerator from "../forms/FormFieldGenerator";
 import MovieFormData from "../../data/movies.json";
 import InitialData from "../../data/initialdata.json";
 import SeriesData from "../../data/series.json";

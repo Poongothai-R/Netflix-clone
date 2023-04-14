@@ -1,6 +1,6 @@
 import Logo from "../../assets/images/netflix-logo.svg";
 import SignInFields from "../../data/profile.json";
-import FormFieldGenerator from "../../forms/FormFieldGenerator";
+import FormFieldGenerator from "../../components/forms/FormFieldGenerator";
 import {createAccount} from "../../scripts/auth";
 import {createDocument} from "../../scripts/fireStore";
 import { useProfile } from "../../state/useProfile";

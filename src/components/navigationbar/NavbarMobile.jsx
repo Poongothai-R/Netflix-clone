@@ -1,11 +1,11 @@
 
 import { FaBars } from "react-icons/fa";
-import Logo from "../assets/images/netflix-logo.svg";
+import Logo from "../../assets/images/netflix-logo.svg";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../state/useUser";
+import { useUser } from "../../state/useUser";
 import { GoSearch } from "react-icons/go";
-import { useCategory } from "../state/useCategory";
-import { useEpisode } from "../state/useEpisode";
+import { useCategory } from "../../state/useCategory";
+import { useEpisode } from "../../state/useEpisode";
 
 export default function NavbarMobile() {
     const Navigate = useNavigate();
@@ -22,10 +22,10 @@ export default function NavbarMobile() {
         Navigate("/");
     }
 
-    function searchVideo(e) {
-        e.preventDefault();
+    function searchVideo(event) {
+        event.preventDefault();
         setIsSearch({ type: 'SET_ITEM', payload: true });
-        const searchkey = e.target.value;
+        const searchkey = event.target.value;
         const searchTerm = searchkey.toLowerCase();
         if (searchkey !== '') {
             const filterData = displayData.map((recs) => {
@@ -51,7 +51,7 @@ export default function NavbarMobile() {
             <div className="nav-items">
                 <ul>
                     <li>
-                        <a href="javascript: void(0);"><FaBars className="bar-icon" /></a>
+                        <a href=""><FaBars className="bar-icon" /></a>
                         <ul>
                             <li> <a href="/">Home</a> </li>
                             <li> <a href="/movies">Movies</a> </li>
@@ -65,7 +65,8 @@ export default function NavbarMobile() {
                     <a href="/"><img src={Logo} alt="netflix red colour text" /></a>
                 </div>
                 <div className="mobilesearchbox">
-                    <input type="search" id="mobilesearch" placeholder="Search: Titles, Genres" onChange={(e) => searchVideo(e)} />
+                    <input type="search" id="mobilesearch" placeholder="Search: Titles, Genres"
+                           onChange={(event) => searchVideo(event)} />
                     <GoSearch id="mobilesearchicon" />
                 </div>
 
