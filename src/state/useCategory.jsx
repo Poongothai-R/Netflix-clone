@@ -11,17 +11,17 @@ export function CategoryProvider({ children }) {
     // State
     const [categoryData, dispatch] = useReducer(itemsReducer, []);
     const [displayData, setDisplayData] = useReducer(itemsReducer, []);
+    const [initDisplayData, setInitDisplayData] = useReducer(itemsReducer, []);
     const [modal, setModal] = useState(null);
     // Properties
-    const value = { categoryData, dispatch, modal, setModal,displayData, setDisplayData};
+    const value = { categoryData, dispatch, modal, setModal,displayData, setDisplayData,initDisplayData,setInitDisplayData};
 
     return <CategoryContext.Provider value={value}>{children}</CategoryContext.Provider>;
 }
 
 export function useCategory() {
+
     const context = useContext(CategoryContext);
-
     if (!context) throw new Error("useCategory is used inside <CategoryProvider>");
-
     return context;
 }

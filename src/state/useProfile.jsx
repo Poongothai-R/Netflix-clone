@@ -37,10 +37,8 @@ export function ProfileProvider({ children }) {
 
 
 export function useProfile() {
-    // Properties
-    const context = useContext(ProfileContext);
-    // Safeguard
-    if (!context) throw new Error("useProfile() must be used within <ProfileProvider>");
 
+    const context = useContext(ProfileContext);
+    if (!context) throw new Error("useProfile() must be used within <ProfileProvider>");
     return context;
 }

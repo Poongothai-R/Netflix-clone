@@ -1,4 +1,7 @@
+
+
 export default async function resizeImage(imageSource, width, height) {
+
     const canvas = document.createElement("canvas");
     const image = await loadImage(imageSource);
     const newSize = proportionalScaling(image, width, height); // 240, 129

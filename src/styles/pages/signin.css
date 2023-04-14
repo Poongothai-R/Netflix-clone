@@ -188,7 +188,7 @@
 }
 
 
-@media screen and (min-width:1024px) and (max-height:800px) {
+@media screen and (min-width:1024px) and (max-height:850px) {
     .box-container {
         width: 40vw;
         min-height: 30vh;
