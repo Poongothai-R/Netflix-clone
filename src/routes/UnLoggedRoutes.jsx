@@ -3,12 +3,13 @@ import Signup from "../pages/auth/Signup";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import { Routes, Route } from "react-router-dom";
 
+// good
 export default function UnLoggedRoutes() {
-    return (
-        <Routes>
-            <Route path="/" element={<SignIn />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/forgotpassword" element={<ForgotPassword />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<SignIn />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/forgotpassword" element={<ForgotPassword />} />
+    </Routes>
+  );
 }

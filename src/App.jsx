@@ -1,6 +1,4 @@
-
 import "./styles/global/style.css";
-
 
 import ScrollTop from "./scripts/ScrollTop";
 import { BrowserRouter } from "react-router-dom";
@@ -10,7 +8,7 @@ import { useUser } from "./state/useUser";
 import LoggedRoutes from "./routes/LoggedRoutes";
 import UnLoggedRoutes from "./routes/UnLoggedRoutes";
 
-
+// good
 export default function App() {
   const { uid } = useUser();
 
@@ -23,5 +21,3 @@ export default function App() {
     </BrowserRouter>
   );
 }
-
-

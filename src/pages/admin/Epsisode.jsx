@@ -9,53 +9,70 @@ import EpisodeCard from "../../components/admin/EpisodeCard";
 import ModalAddForm from "../../components/admin/ModalAddForm";
 
 export default function Episode() {
-    const [status, setStatus] = useState(0);
-    const { setModal } = useCategory();
-    const { categoryId, getCategory } = useSeason();
-    const { episodeData, episodeDispatch } = useEpisode();
-    const { showname, season } = useParams();
-    const cid = (categoryId === null) ? getCategory('CID') : categoryId;
-    const collection = 'TVShows/' + cid + '/' + season;
+  const [status, setStatus] = useState(0);
+  const { setModal } = useCategory();
+  const { categoryId, getCategory } = useSeason();
+  const { episodeData, episodeDispatch } = useEpisode();
+  const { showname, season } = useParams();
+  const cid = categoryId === null ? getCategory("CID") : categoryId;
+  const collection = "TVShows/" + cid + "/" + season;
 
-    useEffect(() => {
-        loadData(collection);
-    }, []);
+  useEffect(() => {
+    loadData(collection);
+  }, []);
 
-    async function loadData(collection) {
-        const data = await readDocuments(collection).catch(onFail);
-        onSuccess(data);
-    }
+  async function loadData(collection) {
+    const data = await readDocuments(collection).catch(onFail);
+    onSuccess(data);
+  }
 
-    function onSuccess(data) {
-        episodeDispatch({ type: "INIT_ITEM", payload: data });
-        setStatus(1);
-    }
+  function onSuccess(data) {
+    episodeDispatch({ type: "INIT_ITEM", payload: data });
+    setStatus(1);
+  }
 
-    function onFail() {
-        setStatus(2);
-    }
+  function onFail() {
+    setStatus(2);
+  }
 
-    const EpisodeList = (status === 1) && (episodeData.map((recs) =>
-        <EpisodeCard key={recs.id} data={recs} path={collection} showname={showname}/>))
+  const EpisodeList =
+    status === 1 &&
+    episodeData.map((recs) => (
+      <EpisodeCard
+        key={recs.id}
+        data={recs}
+        path={collection}
+        showname={showname}
+      />
+    ));
 
-    return (
-        <div>
-            {(status === 0) && <h1 className="loading"> Loading... </h1>}
-            {(status === 2) && <h1> ⚠ Error </h1>}
-            {(status === 1) &&
-                <div id="episodepage">
-                    <div className="container">
-                        <div className="cards">
-                            {(episodeData) && EpisodeList}
-                            <Link key={"EpsidoeAddForm"} onClick={() => {
-                                setModal(<ModalAddForm path={collection} createType={"Episode"}/>) }}>
-                                <AiOutlineFileAdd className="reacticons" />
-                            </Link>
-                        </div>
-                    </div>
-                    <Link to={`/tvshows/${showname}`} className="back-btn">Go Back</Link>
-                </div>
-            }
+  return (
+    <div>
+      {/* the same as the refactor tip in category */}
+      {status === 0 && <h1 className="loading"> Loading... </h1>}
+      {status === 2 && <h1> ⚠ Error </h1>}
+      {status === 1 && (
+        <div id="episodepage">
+          <div className="container">
+            <div className="cards">
+              {episodeData && EpisodeList}
+              <Link
+                key={"EpsidoeAddForm"}
+                onClick={() => {
+                  setModal(
+                    <ModalAddForm path={collection} createType={"Episode"} />
+                  );
+                }}
+              >
+                <AiOutlineFileAdd className="reacticons" />
+              </Link>
+            </div>
+          </div>
+          <Link to={`/tvshows/${showname}`} className="back-btn">
+            Go Back
+          </Link>
         </div>
-    )
+      )}
+    </div>
+  );
 }
